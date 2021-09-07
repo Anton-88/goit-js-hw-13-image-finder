@@ -3,5 +3,5 @@ export const refs = {
     findBtn: document.querySelector('#findBtn'),
     moreBtn: document.querySelector('#more'),
     gallery: document.querySelector('.gallery'),
-
+    form: document.querySelector('#search-form'),
 }

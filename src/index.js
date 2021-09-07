@@ -8,6 +8,7 @@ import { alert } from './../node_modules/@pnotify/core/dist/PNotify.js';
 import './../node_modules/@pnotify/core/dist/PNotify.css';
 import './../node_modules/@pnotify/core/dist/BrightTheme.css';
 import './../node_modules/@pnotify/core/dist/Material.css';
+import scrollIntoView from './js/scrolling';
 
 const imgFromBE = new imgApiService;
 let markup = '';
@@ -46,3 +47,4 @@ function drawResult(arr) {
 
 refs.findBtn.addEventListener('click', getImage)
 refs.moreBtn.addEventListener('click', getMoreImg)
+refs.moreBtn.addEventListener('click', scrollIntoView);
