@@ -9,6 +9,7 @@ import './../node_modules/@pnotify/core/dist/PNotify.css';
 import './../node_modules/@pnotify/core/dist/BrightTheme.css';
 import './../node_modules/@pnotify/core/dist/Material.css';
 import scrollIntoView from './js/scrolling';
+import { debounce } from 'lodash';
 
 const imgFromBE = new imgApiService;
 let markup = '';
@@ -36,15 +37,15 @@ async function getMoreImg(e) {
     imgFromBE.setQuery(value);
     const pics = await imgFromBE.fetchImages();
     console.log('pics', pics);
-    drawResult(pics)
+    drawResult(pics);
 }
 
-function drawResult(arr) {
+async function drawResult(arr) {
     console.log('arr :>> ', arr);
-    markup = card(arr);
+    markup = await card(arr);
     refs.gallery.insertAdjacentHTML('beforeend', markup);
 }
 
 refs.findBtn.addEventListener('click', getImage)
 refs.moreBtn.addEventListener('click', getMoreImg)
-refs.moreBtn.addEventListener('click', scrollIntoView);
+refs.moreBtn.addEventListener('click', debounce(scrollIntoView, 1000));
